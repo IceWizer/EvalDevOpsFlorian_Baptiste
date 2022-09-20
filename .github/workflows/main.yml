@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  linter:
+    name: Linter
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Validate linter with phpcs.phar
+      run: |
+        wget -O phpcs https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
+        chmod +x ./phpcs
+        ./phpcs --standard=PSR12 ./
+        
+  phpUnitTest:
+    name: PHP Unit Test
+    
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Install phpab for autoload
+      run: |
+        wget -O phpab https://github.com/theseer/Autoload/releases/download/1.27.1/phpab-1.27.1.phar
+        chmod +x ./phpab
+    
+    - name: Run Autoload
+      run: ./phpab -c -o ./autoload.php ./
+
+    - name: Install phpunit.phar for phpunit test
+      run: |
+        wget -O phpunit https://phar.phpunit.de/phpunit-9.phar
+        chmod +x ./phpunit
+
+    - name: Validate php unit test with phpunit.phar
+      run: |
+        pwd
+        ./phpunit --bootstrap ./autoload.php ./tests
+        
+  deploy:
+    name: Deploy Site
+    
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Upload File
+      run: |
+        scp -r ./ admin@ec2-13-37-249-193.eu-west-3.compute.amazonaws.com:/
