@@ -15,15 +15,18 @@ namespace Entity
 
         protected $identifier;
 
-        public function __construct($p_identifier) { 
+        public function __construct($p_identifier)
+        {
             $this->identifier = $p_identifier;
         }
 
-        public function getIdentifier() {
+        public function getIdentifier()
+        {
             return $this->identifier;
         }
 
-        public function jsonSerialize(): array {
+        public function jsonSerialize(): array
+        {
             return ['id' => $this->identifier];
         }
     }
