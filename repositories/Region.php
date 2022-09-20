@@ -60,7 +60,7 @@ class Region extends Entity
         $regions = array();
 
         $regionRaw = \myPDO\MyPDO::Select($sql, array());
-        $regionFetch = $regionRaw->FetchAll(\PDO::FETCH_FUNC, "region::__constructStatic");
+        $regionFetch = $regionRaw->FetchAll(\PDO::FETCH_FUNC, "\Entity\Region::__constructStatic");
 
         foreach ($regionFetch as $region) {
             $regions[] = $region;

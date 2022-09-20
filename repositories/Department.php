@@ -63,7 +63,7 @@ class Department extends Entity
         $departments = array();
 
         $departmentRaw = \myPDO\MyPDO::Select($sql, array());
-        $departmentFetch = $departmentRaw->FetchAll(\PDO::FETCH_FUNC, "Department::__constructStatic");
+        $departmentFetch = $departmentRaw->FetchAll(\PDO::FETCH_FUNC, "\Entity\Department::__constructStatic");
 
         foreach ($departmentFetch as $department) {
             $departments[] = $department;
