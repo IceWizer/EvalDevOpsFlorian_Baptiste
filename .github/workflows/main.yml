@@ -36,4 +36,6 @@ jobs:
     - name: scp-deployer
       # You may pin to the exact commit or the version.
       # uses: siva1024/scp-deployer@595af961c23bfad4cc7c1bcdfe9b57fb840e7cb9
-      run: scp -i ${{secrets.KEY}} ./ admin@ec2-13-37-249-193.eu-west-3.compute.amazonaws.com:/app
+      run: |
+        ${{secrets.KEY}} > publicKey.key
+        scp -i publicKey.key --exclude='*.key' ./ admin@ec2-13-37-249-193.eu-west-3.compute.amazonaws.com:/app
