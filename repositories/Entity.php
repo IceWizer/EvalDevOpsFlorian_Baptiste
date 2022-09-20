@@ -7,22 +7,24 @@ require dirname(__FILE__) . '../../lib/database/MyPDO.php';
  *
  * @author Florian
  */
-class Entity implements JsonSerializable {
-    private static $myDatabase;
-    
-    protected $identifier;
-    
-    public function __construct($p_identifier)
+namespace Entity
+{
+    class Entity implements \JsonSerializable
     {
-        $this->identifier = $p_identifier;
-    }
-    
-    public function getIdentifier()
-    {
-        return $this->identifier;
-    }
+        private static $myDatabase;
 
-    public function jsonSerialize(): array {
-        return ['id' => $this->identifier];
+        protected $identifier;
+
+        public function __construct($p_identifier) { 
+            $this->identifier = $p_identifier;
+        }
+
+        public function getIdentifier() {
+            return $this->identifier;
+        }
+
+        public function jsonSerialize(): array {
+            return ['id' => $this->identifier];
+        }
     }
 }
