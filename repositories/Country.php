@@ -56,8 +56,7 @@ namespace Entity
             $countriesRaw = \myPDO\MyPDO::Select($sql, array());
             $countriesFetch = $countriesRaw->FetchAll(\PDO::FETCH_FUNC, "country::__constructStatic");
 
-            foreach ($countriesFetch as $country)
-            {
+            foreach ($countriesFetch as $country) {
                 $countries[] = $country;
             }
 
@@ -71,7 +70,7 @@ namespace Entity
                 'label' => $this->label
                     ];
         }
- 
+
         public function toArray(): array
         {
             return [
