@@ -34,16 +34,19 @@ namespace Entity
             return $this->label;
         }
 
-        public function getRegion() 
+        public function getRegion()
         {
             return $this->region;
         }
 
         public static function insert($label, $regionIdentifier, $departmentNumber)
         {
-            $sql = 'INSERT INTO Department (label, department_number, region) VALUES (:label, :department_number, :region)';
-            
-            \myPDO\MyPDO::InsertDelete($sql, array(':label' => $label, ':department_number' => $departmentNumber, ':region' => $regionIdentifier));
+            $sql = 'INSERT INTO Department (label, department_number, region) 
+                    VALUES (:label, :department_number, :region)';
+
+            \myPDO\MyPDO::InsertDelete($sql, array(':label' => $label,
+                                                   ':department_number' => $departmentNumber,
+                                                   ':region' => $regionIdentifier));
         }
 
         public function view()
@@ -59,15 +62,14 @@ namespace Entity
                     FROM Department';
 
             $departments = array();
-            
+
             $departmentRaw = \myPDO\MyPDO::Select($sql, array());
             $departmentFetch = $departmentRaw->FetchAll(\PDO::FETCH_FUNC, "Department::__constructStatic");
-            
-            foreach ($departmentFetch as $department)
-            {
+
+            foreach ($departmentFetch as $department) {
                 $departments[] = $department;
             }
-            
+
             return $departments;
         }
 
