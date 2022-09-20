@@ -1,6 +1,11 @@
 <?php
 namespace Entity;
 
+function setUp()
+{
+    require_once dirname(__FILE__) . '/Entity.php';
+}
+
 /**
  * Description of Country
  *
