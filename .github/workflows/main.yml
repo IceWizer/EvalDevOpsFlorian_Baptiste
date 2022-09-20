@@ -40,19 +40,18 @@ jobs:
       #run: |
         #scp -i ${{secrets.KEY}} --exclude='*.key' ./ admin@ec2-13-37-249-193.eu-west-3.compute.amazonaws.com:/app
     
-    - name: deploy-via-scp
+    - name: scp-pipeline
       # You may pin to the exact commit or the version.
-      # uses: horochx/deploy-via-scp@c82b42f002701aeca107ef7cf6ea4efe6788141e
-      uses: horochx/deploy-via-scp@1.1.0
+      # uses: cross-the-world/scp-pipeline@b4d86397129250eb940fabdc3f7a435436d2503a
+      uses: cross-the-world/scp-pipeline@v1.2.1
       with:
-        # Local file path
-        local: ./
-        # Remote file path
-        remote: /app
-        # Remote server address
+        # ssh remote host
         host: ec2-13-37-249-193.eu-west-3.compute.amazonaws.com
-        # Remote server user
+        # ssh remote user
         user: admin
-        # Remote server private key
-        key: ${{secrets.key}}
-
+        # content of ssh private key. ex raw content of ~/.ssh/id_rsa
+        key: ${{secrets.KEY}}
+        # source to copy
+        local: ./
+        # destination for copy
+        remote: /app
