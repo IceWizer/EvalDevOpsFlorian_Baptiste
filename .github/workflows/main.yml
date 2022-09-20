@@ -55,3 +55,5 @@ jobs:
         username: admin
         # Private SSH key
         key: ${{secrets.KEY}}
+        # 1 if is it recursive
+        isRecursive: 1
