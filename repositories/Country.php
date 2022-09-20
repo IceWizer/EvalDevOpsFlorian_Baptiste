@@ -1,5 +1,7 @@
 <?php
 
+require_once dirname(__FILE__) . '/Entity.php';
+
 /**
  * Description of Country
  *
@@ -7,9 +9,6 @@
  */
 namespace Entity
 {
-
-    require_once dirname(__FILE__) . '/Entity.php';
-
     class Country extends Entity
     {
         private $label;
