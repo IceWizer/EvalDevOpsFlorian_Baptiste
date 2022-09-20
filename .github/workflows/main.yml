@@ -47,6 +47,8 @@ jobs:
       with:
         # IP Address or DNS of your target host
         host: ec2-13-37-249-193.eu-west-3.compute.amazonaws.com
+        # Source route folder
+        origin: ./*
         # Destination route folder
         destination: /app
         # User for remote connection
