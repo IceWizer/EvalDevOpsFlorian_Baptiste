@@ -53,7 +53,7 @@ class Country extends Entity
         $countries = array();
 
         $countriesRaw = \myPDO\MyPDO::Select($sql, array());
-        $countriesFetch = $countriesRaw->FetchAll(\PDO::FETCH_FUNC, "country::__constructStatic");
+        $countriesFetch = $countriesRaw->FetchAll(\PDO::FETCH_FUNC, "\Entity\Country::__constructStatic");
 
         foreach ($countriesFetch as $country) {
             $countries[] = $country;
