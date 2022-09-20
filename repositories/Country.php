@@ -7,6 +7,7 @@
  */
 namespace Entity
 {
+    
     require_once dirname(__FILE__) . '/Entity.php';
 
     class Country extends Entity
