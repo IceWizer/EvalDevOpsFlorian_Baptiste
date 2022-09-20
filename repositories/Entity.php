@@ -1,4 +1,5 @@
 <?php
+namespace Entity;
 
 require dirname(__FILE__) . '../../lib/database/MyPDO.php';
 
@@ -7,27 +8,24 @@ require dirname(__FILE__) . '../../lib/database/MyPDO.php';
  *
  * @author Florian
  */
-namespace Entity
+class Entity implements \JsonSerializable
 {
-    class Entity implements \JsonSerializable
+    private static $myDatabase;
+
+    protected $identifier;
+
+    public function __construct($p_identifier)
     {
-        private static $myDatabase;
+        $this->identifier = $p_identifier;
+    }
 
-        protected $identifier;
+    public function getIdentifier()
+    {
+        return $this->identifier;
+    }
 
-        public function __construct($p_identifier)
-        {
-            $this->identifier = $p_identifier;
-        }
-
-        public function getIdentifier()
-        {
-            return $this->identifier;
-        }
-
-        public function jsonSerialize(): array
-        {
-            return ['id' => $this->identifier];
-        }
+    public function jsonSerialize(): array
+    {
+        return ['id' => $this->identifier];
     }
 }
