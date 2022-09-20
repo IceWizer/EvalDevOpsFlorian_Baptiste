@@ -17,10 +17,10 @@ $departments = department::getDepartmentsWithRegion($_GET["identifier"]);
 </form>
 <table>
 <?php
-    foreach ($departments as $department) {
-        echo '<tr>';
-        $department->view();
-        echo '</tr>';
-    }
-    ?>
+foreach ($departments as $department) {
+    echo '<tr>';
+    $department->view();
+    echo '</tr>';
+}
+?>
 </table>
