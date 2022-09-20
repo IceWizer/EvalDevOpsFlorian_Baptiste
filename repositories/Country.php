@@ -1,7 +1,5 @@
 <?php
 
-require_once dirname(__FILE__) . '/Entity.php';
-
 namespace Entity;
 
 /**
