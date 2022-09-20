@@ -63,11 +63,10 @@ namespace Entity
             $regionRaw = \myPDO\MyPDO::Select($sql, array());
             $regionFetch = $regionRaw->FetchAll(\PDO::FETCH_FUNC, "region::__constructStatic");
 
-            foreach ($regionFetch as $region)
-            {
+            foreach ($regionFetch as $region) {
                 $regions[] = $region;
             }
-            
+
             return $regions;
         }
 
