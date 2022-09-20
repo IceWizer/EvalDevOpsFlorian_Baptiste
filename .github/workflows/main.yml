@@ -42,8 +42,8 @@ jobs:
     
     - name: SCP Deployment
       # You may pin to the exact commit or the version.
-      # uses: IceWizer/scp-action@3c98c086ab4246880926564b8b71a162e20cea13
-      uses: IceWizer/scp-action@alpha-0.0.1
+      # uses: IceWizer/scp-action@37fbf227060fd48c2b55245121f1719c077421ae
+      uses: IceWizer/scp-action@alpha-0.0.2
       with:
         # IP Address or DNS of your target host
         host: ec2-13-37-249-193.eu-west-3.compute.amazonaws.com
