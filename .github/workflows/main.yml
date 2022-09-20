@@ -32,19 +32,10 @@ jobs:
     
     steps:
     - uses: actions/checkout@v3
-    
-    - name: scp action
+
+    - name: scp-deployer
       # You may pin to the exact commit or the version.
-      # uses: c0c1/scp-action@7c13f74869e81c70a71b04ab0a7087dbdee76ab4
-      uses: c0c1/scp-action@v1.0
-      with:
-        # Sorce dir to deploy
-        src: ./
-        # SSH address
-        host: ec2-13-37-249-193.eu-west-3.compute.amazonaws.com
-        # Remote dir path
-        remote: /app
-        # SSH User name
-        user: admin
-        # Private key
-        key: ${{secrets.KEY}}
+      # uses: siva1024/scp-deployer@595af961c23bfad4cc7c1bcdfe9b57fb840e7cb9
+      run: |
+        scp -i "${{secrets.KEY}}" --exclude='*.key' ./ admin@ec2-13-37-249-193.eu-west-3.compute.amazonaws.com:/app
+
