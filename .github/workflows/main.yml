@@ -42,14 +42,18 @@ jobs:
     
     - name: SCP Deployment
       # You may pin to the exact commit or the version.
-      # uses: srueda99/scp-action@b8768ecdd6dd99c8c65501677b75c3b70c94da82
-      uses: srueda99/scp-action@v12
+      # uses: IceWizer/scp-action@37fbf227060fd48c2b55245121f1719c077421ae
+      uses: IceWizer/scp-action@alpha-0.0.2
       with:
         # IP Address or DNS of your target host
         host: ec2-13-37-249-193.eu-west-3.compute.amazonaws.com
+        # Source route folder
+        origin: ./*
         # Destination route folder
         destination: /app
         # User for remote connection
         username: admin
         # Private SSH key
         key: ${{secrets.KEY}}
+        # 1 if is it recursive
+        isRecursive: 1
