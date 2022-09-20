@@ -10,25 +10,25 @@ permissions:
   contents: read
 
 jobs:
-  linter:
-    name: Linter
-    runs-on: ubuntu-latest
+#  linter:
+#    name: Linter
+#    runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v3
+#    steps:
+#    - uses: actions/checkout@v3
 
-    - name: Validate linter with phpcs.phar
-      run: |
-        wget -O phpcs https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
-        chmod +x ./phpcs
-        ./phpcs --standard=PSR12 ./
+#    - name: Validate linter with phpcs.phar
+#      run: |
+#        wget -O phpcs https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
+#        chmod +x ./phpcs
+#        ./phpcs --standard=PSR12 ./
         
   deploy:
     name: Deploy Site
     
     runs-on: ubuntu-latest
     
-    needs: [linter]
+#    needs: [linter]
     
     steps:
     - uses: actions/checkout@v3
