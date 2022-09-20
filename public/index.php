@@ -3,7 +3,7 @@
 ini_set('display_errors', 'on');
 require_once dirname(__FILE__) . '/../repositories/Country.php';
 
-$countries = Country::getCountries();
+$countries = \Entity\Country::getCountries();
 ?>
 
 <h1>Insert</h1>

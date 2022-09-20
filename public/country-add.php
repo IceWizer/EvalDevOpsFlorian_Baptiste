@@ -6,7 +6,7 @@ require_once '../repositories/Country.php';
 
 // Check label is exist
 if (!empty($_POST["label"])) {
-    Country::insert($_POST["label"]);
+    \Entity\Country::insert($_POST["label"]);
 }
 
 header("Location: ../");

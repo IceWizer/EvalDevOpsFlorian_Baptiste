@@ -3,7 +3,7 @@
 ini_set('display_errors', 'on');
 require_once dirname(__FILE__) . '/../repositories/Department.php';
 
-$departments = department::getDepartmentsWithRegion($_GET["identifier"]);
+$departments = \Entity\Department::getDepartmentsWithRegion($_GET["identifier"]);
 ?>
 <a href= <?php echo "/country.php?identifier=" . $_GET["identifier"] ?>>Go Back</a>
 <h1>Insert</h1>
