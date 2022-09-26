@@ -69,6 +69,24 @@ class Region extends Entity
         return $regions;
     }
 
+    public static function getRegionsWithCountry(int $country)
+    {
+        $sql = 'SELECT Region.identifier, Region.label, Region.country
+                FROM Region
+                WHERE Region.country = :country';
+
+        $regions = array();
+
+        $regionRaw = \myPDO\MyPDO::Select($sql, array(":country" => $country));
+        $regionFetch = $regionRaw->FetchAll(\PDO::FETCH_FUNC, "\Entity\Region::__constructStatic");
+
+        foreach ($regionFetch as $region) {
+            $regions[] = $region;
+        }
+
+        return $regions;
+    }
+
     public function jsonSerialize(): array
     {
         return [

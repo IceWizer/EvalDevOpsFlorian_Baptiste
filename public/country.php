@@ -3,7 +3,7 @@
 ini_set('display_errors', 'on');
 require_once dirname(__FILE__) . '/../repositories/Region.php';
 
-$regions = \Entity\Region::getRegions();
+$regions = \Entity\Region::getRegionsWithCountry($_GET["identifier"]);
 ?>
 
 <h1>Insert</h1>
